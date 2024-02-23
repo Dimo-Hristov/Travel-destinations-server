@@ -1,6 +1,6 @@
 const destinationsController = require('express').Router();
 
-const { getAll, create, getById, update, deleteById, getByUserId, getMydestinations, likeDestination, getMyLikes, unLikeDestiation } = require('../service/destinationService');
+const { getAll, create, getById, update, deleteById, getByUserId, getMydestinations, likeDestination, getMyLikes, unLikeDestination } = require('../service/destinationService');
 
 
 destinationsController.get('/', async (req, res) => {
@@ -113,7 +113,7 @@ destinationsController.get('/like/:id', async (req, res) => {
         if (destination.likes.includes(req.user?._id)) {
             try {
                 console.log('in');
-                await unLikeDestiation(req.params.id, req.user._id);
+                await unLikeDestination(req.params.id, req.user._id);
                 const destination = await getById(req.params.id);
 
                 return res.status(200).json(destination)
