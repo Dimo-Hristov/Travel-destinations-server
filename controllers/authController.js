@@ -3,7 +3,7 @@ const { login, register } = require('../service/userService');
 
 authController.post('/register', async (req, res) => {
     try {
-        const token = await register(req.body.email, req.body.username, req.body.password)
+        const token = await register(req.body.email, req.body.password)
         if (!token) {
             throw new Error('Unable to register with this credential!!!')
         }
